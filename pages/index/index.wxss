@@ -1,2 +1,6 @@
 /* 1.0 搜索框  */
-
+.slider,
+.slider-image{
+  width: 100%;
+  height: 340rpx;
+}
