@@ -48,3 +48,17 @@
   margin-left: 12rpx;
   margin-bottom: 10rpx;
 }
+
+/* 5.0 返回顶部 */
+.top{
+  width: 90rpx;
+  height: 90rpx;
+  background-color: rgba(255,255,255,.7);
+  border-radius: 50%;
+  position: fixed;
+  right:20rpx;
+  bottom: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

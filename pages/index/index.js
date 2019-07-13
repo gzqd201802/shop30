@@ -9,7 +9,9 @@ Page({
     // 2.0 初始化入口数据
     entry: [],
     // 3.0 初始化楼层数据
-    floor: []
+    floor: [],
+    // 4.0 是否显示返回顶部
+    showTop: false
   },
 
   /**
@@ -25,6 +27,7 @@ Page({
     // 3.1 调用楼层数据
     this.getFloorData();
   },
+
   // 1.0 封装轮播图请求
   getSliderData() {
     // 1.0 向服务器发送请求，获取轮播图数据
@@ -76,6 +79,35 @@ Page({
         });
       }
     })
+  },
+
+  // 4.0 返回顶部的事件处理函数
+  goTop(event) {
+    const {
+      top
+    } = event.currentTarget.dataset;
+    // 实现返回顶部效果
+    wx.pageScrollTo({
+      scrollTop: top,
+      duration: 300
+    })
+  },
+
+  // 5.0 页面滚动触发的事件
+  onPageScroll(event) {
+    // console.log(event);
+    const {
+      scrollTop
+    } = event;
+    if (scrollTop > 200) {
+      this.setData({
+        showTop: true
+      });
+    } else {
+      this.setData({
+        showTop: false
+      });
+    }
   },
 
   /**

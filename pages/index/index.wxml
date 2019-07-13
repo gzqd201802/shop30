@@ -36,3 +36,10 @@
     </view>
   </view>
 </block>
+<!-- 5.0 返回顶部 -->
+<!-- hidden 是否隐藏返回顶部盒子 -->
+<!-- bindtap="goTop"    绑定事件 -->
+<!-- data-top="{{ 0 }}" 事件参数传递 -->
+<view hidden="{{ !showTop }}" class="top" bindtap="goTop" data-top="{{ 0 }}">
+  <text class="top-text">顶部</text>
+</view>
