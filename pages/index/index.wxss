@@ -1,6 +1,22 @@
 /* 1.0 搜索框  */
-.slider,
-.slider-image{
+
+/* 2.0 轮播图模块 */
+
+.slider, .slider-image {
   width: 100%;
   height: 340rpx;
+}
+
+/* 3.0 首页入口模块 */
+.entry{
+  display: flex;
+  padding: 25rpx 0;
+}
+.entry-item{
+  flex: 1;
+  text-align: center;
+}
+.entry-item-image{
+  width: 128rpx;
+  height: 140rpx;
 }

@@ -1,19 +1,19 @@
 <!-- 1.0 搜索框 -->
 <!-- 1.1 使用搜索框组件 -->
 <Search></Search>
-<!-- 1.2 轮播图模块 -->
-<swiper 
-class="slider" 
-indicator-dots 
-circular
-autoplay 
-interval="2000" 
-indicator-color="rgba(255,255,255,.5)" 
-indicator-active-color="#fff"
->
+<!-- 2.0 轮播图模块 -->
+<swiper class="slider" indicator-dots circular autoplay interval="2000" indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff">
   <block wx:for="{{ slider }}" wx:key="goods_id">
     <swiper-item>
       <image class="slider-image" src="{{ item.image_src }}"></image>
     </swiper-item>
   </block>
 </swiper>
+<!-- 3.0 首页入口 -->
+<view class="entry">
+  <block wx:for="{{ entry }}" wx:key="name">
+    <view class="entry-item">
+      <image class="entry-item-image" src="{{ item.image_src }}"></image>
+    </view>
+  </block>
+</view>
