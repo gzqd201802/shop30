@@ -17,3 +17,22 @@
     </view>
   </block>
 </view>
+<!-- 4.0 首页楼层 -->
+<!-- 一层循环 -->
+<block wx:for="{{ floor }}" wx:key="">
+  <view class="floor-head">
+    <image class="floor-head-image" src="{{ item.floor_title.image_src }}"></image>
+  </view>
+  <view class="floor-body">
+    <view class="floor-body-left">
+      <image class="floor-body-left-image" src="{{ item.product_list[0].image_src }}"></image>
+    </view>
+    <view class="floor-body-right">
+      <!-- 二层循环 -->
+      <block wx:for="{{ item.product_list }}" wx:key="name" wx:for-item="item2" wx:for-index="index2">
+        <!-- wx:if 条件渲染 -->
+        <image wx:if="{{ index2 > 0 }}" class="floor-body-right-image" src="{{ item2.image_src }}"></image>
+      </block>
+    </view>
+  </view>
+</block>
