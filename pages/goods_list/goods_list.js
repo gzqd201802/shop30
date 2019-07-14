@@ -1,3 +1,7 @@
+const {
+  request
+} = require("../../utils/request.js");
+
 // pages/goods_list/goods_list.js
 Page({
 
@@ -7,7 +11,8 @@ Page({
   data: {
     // 初始化关键词
     keyword: "",
-    activeIndex: 0
+    activeIndex: 0,
+    goods: []
   },
 
   /**
@@ -22,6 +27,26 @@ Page({
     this.setData({
       keyword
     });
+    // 调用
+    this.getListData(keyword);
+  },
+
+  getListData(keyword) {
+
+    request({
+        url: "goods/search?query=" + keyword
+      })
+      .then(res => {
+        console.log(res);
+        const {
+          goods
+        } = res;
+
+        this.setData({
+          goods
+        })
+      });
+
   },
 
   /**

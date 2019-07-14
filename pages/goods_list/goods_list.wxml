@@ -13,12 +13,12 @@
 </view>
 <!-- 3.0 商品列表 -->
 <view class="goods-list">
-  <block wx:for="{{ 10 }}" wx:key="">
+  <block wx:for="{{ goods }}" wx:key="goods_id">
     <view class="goods-item">
-      <image class="goods-item-image" src=""></image>
+      <image class="goods-item-image" src="{{ item.goods_small_logo }}"></image>
       <view class="goods-item-info">
-        <view class="goods-item-info-name">小米</view>
-        <view class="goods-item-info-price">￥99.00</view>
+        <view class="goods-item-info-name">{{ item.goods_name }}</view>
+        <view class="goods-item-info-price">￥{{ item.goods_price }}</view>
       </view>
     </view>
   </block>
