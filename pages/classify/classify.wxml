@@ -6,19 +6,27 @@
   <scroll-view scroll-y class="classify-left">
     <block wx:for="{{ classify }}" wx:key="cat_id">
       <!-- 三元表达式：条件 ? 成立执行 : 不成立执行 -->
-      <view class="classify-left-item {{ index === activeIndex ? 'active' : '' }}">{{ item.cat_name }}</view>
+      <view 
+        bindtap="changeTab" 
+        data-index="{{ index }}" 
+        class="classify-left-item {{ index === activeIndex ? 'active' : '' }}"
+      >{{ item.cat_name }}</view>
     </block>
   </scroll-view>
   <!-- 分类右边 -->
   <scroll-view scroll-y class="classify-right">
-    <view class="classify-right-title">电视</view>
-    <view class="classify-right-list">
-      <block wx:for="{{ 20 }}" wx:key="">
-        <view class="classify-right-item">
-          <image class="classify-right-item-image" src=""></image>
-          <view class="classify-right-item-name">曲面电视</view>
-        </view>
-      </block>
-    </view>
+    <!-- 第一层循环 -->
+    <block wx:for="{{ subClassify }}" wx:key="cat_id">
+      <view class="classify-right-title">{{ item.cat_name }}</view>
+      <view class="classify-right-list">
+        <!-- 第二层循环 -->
+        <block wx:for="{{ item.children }}" wx:key="cat_id" wx:for-item="item2" wx:for-index="index2">
+          <view class="classify-right-item">
+            <image class="classify-right-item-image" src="{{ item2.cat_icon }}"></image>
+            <view class="classify-right-item-name">{{ item2.cat_name }}</view>
+          </view>
+        </block>
+      </view>
+    </block>
   </scroll-view>
 </view>

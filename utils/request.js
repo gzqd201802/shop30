@@ -39,7 +39,7 @@ const request = (param) => {
   })
 }
 
-// 把模块进行导出
+// 把模块进行导出，导出一个对象
 module.exports = {
   request
 }
