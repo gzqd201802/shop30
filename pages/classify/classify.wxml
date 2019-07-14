@@ -21,10 +21,11 @@
       <view class="classify-right-list">
         <!-- 第二层循环 -->
         <block wx:for="{{ item.children }}" wx:key="cat_id" wx:for-item="item2" wx:for-index="index2">
-          <view class="classify-right-item">
+          <!-- 导航链接点击跳转到列表页，并传递商品关键词作为页面参数 -->
+          <navigator url="/pages/goods_list/goods_list?keyword={{ item2.cat_name }}" class="classify-right-item">
             <image class="classify-right-item-image" src="{{ item2.cat_icon }}"></image>
             <view class="classify-right-item-name">{{ item2.cat_name }}</view>
-          </view>
+          </navigator>
         </block>
       </view>
     </block>
