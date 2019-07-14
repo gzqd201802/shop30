@@ -1,2 +1,25 @@
-<!--pages/goods_list/goods_list.wxml-->
-<text>pages/goods_list/goods_list.wxml</text>
+<!-- 1.0 搜索框 -->
+<view class="search">
+  <view class="search-in">
+    <icon class="search-icon" size="32rpx" type="search"></icon>
+    <text class="search-text">{{ keyword }}</text>
+  </view>
+</view>
+<!-- 2.0 tab 栏 -->
+<view class="tabs">
+  <block wx:for="{{ ['综合','销量', '价格'] }}" wx:key="*this">
+    <view class="tabs-item {{ activeIndex === index ? 'active' : '' }}">{{ item }}</view>
+  </block>
+</view>
+<!-- 3.0 商品列表 -->
+<view class="goods-list">
+  <block wx:for="{{ 10 }}" wx:key="">
+    <view class="goods-item">
+      <image class="goods-item-image" src=""></image>
+      <view class="goods-item-info">
+        <view class="goods-item-info-name">小米</view>
+        <view class="goods-item-info-price">￥99.00</view>
+      </view>
+    </view>
+  </block>
+</view>

@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    // 初始化关键词
+    keyword: "",
+    activeIndex: 0
   },
 
   /**
@@ -16,35 +18,38 @@ Page({
     const {
       keyword
     } = options;
-    console.log(keyword);
+    // 更新数据
+    this.setData({
+      keyword
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    console.log("onReady--生命周期函数--监听页面初次渲染完成");
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    console.log("onShow--生命周期函数--监听页面显示");
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    console.log("onHide--生命周期函数--监听页面隐藏");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    console.log("onUnload--生命周期函数--监听页面卸载");
   },
 
   /**
