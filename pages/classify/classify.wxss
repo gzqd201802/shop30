@@ -1,1 +1,81 @@
-/* pages/classify/classify.wxss */
+/* 1.0 搜索框 */
+
+/* 2.0 分类分区 */
+
+.classify {
+  display: flex;
+  /* 定位属性 */
+  position: absolute;
+  /* left right 同时设置可以拉伸出盒子宽度 */
+  left: 0;
+  right: 0;
+  /* 拉伸出盒子高度 */
+  top: 100rpx;
+  bottom: 0;
+}
+
+.classify-left {
+  background-color: #f4f4f4;
+  width: 200rpx;
+  flex-shrink: 0;
+  /* 样式的滚动条在部分机型上会出现卡顿，滑动不流畅 *//* overflow: auto; */
+}
+
+.classify-left-item {
+  border-bottom: 1rpx solid #ccc;
+  /* 行高在盒子有文字的情况下可以撑出盒子高度 */
+  line-height: 100rpx;
+  text-align: center;
+}
+
+/* 交集选择器，代表 .classify-left-item 和 .active 同时在同一个标签上 */
+
+.classify-left-item.active {
+  color: #eb4450;
+  background-color: #fff;
+  position: relative;
+}
+
+/* 通过伪元素画出来一个盒子 */
+
+.classify-left-item.active::before {
+  content: "";
+  position: absolute;
+  width: 10rpx;
+  background-color: #eb4450;
+  left: 0;
+  top: 20rpx;
+  bottom: 20rpx;
+}
+
+.classify-right {
+  flex: 1;
+}
+
+.classify-right-title {
+  text-align: center;
+  margin: 50rpx 0;
+}
+
+.classify-right-title::before, .classify-right-title::after {
+  content: "/";
+  color: #ccc;
+  margin: 0 30rpx;
+}
+
+.classify-right-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.classify-right-item {
+  width: 33.33%;
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.classify-right-item-image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 10rpx;
+}

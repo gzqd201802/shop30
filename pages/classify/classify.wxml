@@ -1,2 +1,24 @@
-<!--pages/classify/classify.wxml-->
-<text>pages/classify/classify.wxml</text>
+<!-- 1.0 分类页搜索框 -->
+<Search></Search>
+<!-- 2.0 分类内容区域 -->
+<view class="classify">
+  <!-- 分类左边 -->
+  <scroll-view scroll-y class="classify-left">
+    <block wx:for="{{ classify }}" wx:key="cat_id">
+      <!-- 三元表达式：条件 ? 成立执行 : 不成立执行 -->
+      <view class="classify-left-item {{ index === activeIndex ? 'active' : '' }}">{{ item.cat_name }}</view>
+    </block>
+  </scroll-view>
+  <!-- 分类右边 -->
+  <scroll-view scroll-y class="classify-right">
+    <view class="classify-right-title">电视</view>
+    <view class="classify-right-list">
+      <block wx:for="{{ 20 }}" wx:key="">
+        <view class="classify-right-item">
+          <image class="classify-right-item-image" src=""></image>
+          <view class="classify-right-item-name">曲面电视</view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>
