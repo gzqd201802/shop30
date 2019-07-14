@@ -1,4 +1,9 @@
-// pages/classify/classify.js
+// 在页面生命周期函数上方，导入 request 模块
+const {
+  request
+} = require("../../utils/request.js");
+
+// 页面生命周期函数
 Page({
 
   /**
@@ -20,35 +25,17 @@ Page({
   },
   // 封装请求的方法
   getClassifyData() {
-    // 显示加载提示框
-    wx.showLoading({
-      title: '疯狂加载中...',
-    });
-    // 请求发送
-    wx.request({
-      // url 请求地址
-      url: 'https://api.zbztb.cn/api/public/v1/categories',
-      // 请求成功的回调函数
-      success: res => {
-        const {
-          message
-        } = res.data;
-        console.log(message);
-        // 把返回结果设置到页面数据中
+    // 调用封装过的 request 方法
+    request({
+        url: 'categories'
+      })
+      // 请求成功执行的回调函数
+      .then(res => {
+        console.log(res);
         this.setData({
-          classify: message
-        })
-      },
-      // 请求失败的回调函数
-      fail: err => {
-
-      },
-      // 请求结束都会执行
-      complete: res => {
-        // 隐藏记载提示框
-        wx.hideLoading();
-      }
-    });
+          classify: res
+        });
+      });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
