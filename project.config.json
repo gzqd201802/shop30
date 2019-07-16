@@ -53,7 +53,7 @@
 					"id": 1,
 					"name": "商品列表",
 					"pathName": "pages/goods_list/goods_list",
-					"query": "keyword=TCL",
+					"query": "query=TCL&cid=10",
 					"scene": null
 				}
 			]

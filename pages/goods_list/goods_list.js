@@ -11,9 +11,16 @@ Page({
   data: {
     // 初始化关键词
     query: "",
+    // tab栏选中的索引
     activeIndex: 0,
+    // 商品列表
     goods: [],
-    cid: 0
+    // 商品分类 id
+    cid: 0,
+    // 页码
+    pagenum: 1,
+    // 每页数据长度
+    pagesize: 20
   },
 
   /**
@@ -30,18 +37,35 @@ Page({
       query,
       cid
     });
+    // 从 data 中解构出来
+    const {
+      pagenum,
+      pagesize
+    } = this.data;
     // 调用
-    this.getListData(query, cid);
+    this.getListData({
+      query,
+      cid,
+      pagenum,
+      pagesize
+    });
   },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+    console.log("页面到达底部触发事件");
+  },
+  
   // 用于请求列表的方法
-  getListData(query, cid) {
+  getListData(params) {
 
     request({
         url: "goods/search",
         // 请求参数
         data: {
-          query,
-          cid
+          ...params
         }
       })
       .then(res => {
@@ -92,12 +116,6 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
 
   /**
    * 用户点击右上角分享
