@@ -1,2 +1,26 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<!-- 1.0 搜索框 -->
+<view class="search">
+  <view class="search-in">
+    <icon class="search-icon" size="32rpx" type="search"></icon>
+    <input class="search-input" type="text" confirm-type="search" value="{{ query }}" bindinput="inputChange" bindconfirm="inputSubmit" placeholder="请输入你想要的商品"></input>
+  </view>
+</view>
+<!-- 2.0 历史搜索 -->
+<view class="search-history">
+  <view class="search-history-title">
+    <text class="search-history-title-text">历史搜索</text>
+    <icon bindtap="removeHistory" class="search-history-title-icon" type="clear" size="32rpx"></icon>
+  </view>
+  <view class="search-history-list">
+    <block wx:for="{{ historyList }}" wx:key="*this">
+      <view class="search-history-item">{{ item }}</view>
+    </block>
+  </view>
+</view>
+
+<!-- 3.0 搜索提示框 -->
+<scroll-view scroll-y class="search-tips" hidden="{{ !showTips }}">
+  <block wx:for="{{ tipsList }}" wx:key="goods_id">
+    <view class="search-tips-item">{{ item.goods_name }}</view>
+  </block>
+</scroll-view>
