@@ -20,7 +20,9 @@ Page({
     // 页码
     pagenum: 1,
     // 每页数据长度
-    pagesize: 20
+    pagesize: 20,
+    // 是否还有更多数据
+    hasMore: true
   },
 
   /**
@@ -56,8 +58,41 @@ Page({
    */
   onReachBottom: function() {
     console.log("页面到达底部触发事件");
+    // pagenum 页码+1，发起新的请求
+    let {
+      pagenum,
+      cid,
+      pagesize,
+      query,
+      hasMore
+    } = this.data;
+
+    if (!hasMore) {
+      // 1. 没有数据给用户提示
+      wx.showToast({
+        title: '所有数据加载完毕...',
+        icon: 'none',
+        duration: 1000
+      });
+      // 没有数据直接 return 跳出当前函数，就不请求数据了
+      return;
+    };
+
+    // 页码+1
+    pagenum++;
+    // 更新页面 data 中的 pagenum
+    this.setData({
+      pagenum
+    })
+    // 重新发起请求请求下一页数据
+    this.getListData({
+      query,
+      cid,
+      pagenum,
+      pagesize
+    });
   },
-  
+
   // 用于请求列表的方法
   getListData(params) {
 
@@ -70,13 +105,25 @@ Page({
       })
       .then(res => {
         console.log(res);
+        // 请求返回的商品列表
         const {
           goods
         } = res;
-
+        // 设置页面数据
         this.setData({
-          goods
-        })
+          // 把原数据展开，把新数据展开，连接成成新数组
+          goods: [...this.data.goods, ...goods]
+        });
+
+        // 判断 goods 长度和 pagesize 长度
+        if (goods.length < this.data.pagesize) {
+
+          // 2. 改变 hasMore 变成 false
+          this.setData({
+            hasMore: false
+          });
+        }
+
       });
 
   },
