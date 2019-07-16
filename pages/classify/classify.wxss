@@ -18,6 +18,8 @@
   background-color: #f4f4f4;
   width: 200rpx;
   flex-shrink: 0;
+  /* 部分机型上，scroll-view 不加高度，无法局部滚动 */
+  height: 100%;
   /* 样式的滚动条在部分机型上会出现卡顿，滑动不流畅 *//* overflow: auto; */
 }
 
@@ -50,6 +52,8 @@
 
 .classify-right {
   flex: 1;
+  /* 部分机型上，scroll-view 不加高度，无法局部滚动 */
+  height: 100%;
 }
 
 .classify-right-title {
