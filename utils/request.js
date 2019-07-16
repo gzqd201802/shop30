@@ -16,6 +16,8 @@ const request = (param) => {
   return new Promise((resolve, reject) => {
     // 请求发送
     wx.request({
+      // 展开传递的请求对象
+      ...param,
       // url 请求地址 = 基准路径 + 参数中 url
       url: baseURL + param.url,
       // 请求成功的回调函数

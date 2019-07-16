@@ -1,9 +1,11 @@
 /* 1.0 搜索框  */
-.search{
+
+.search {
   background-color: #eee;
   padding: 20rpx 16rpx;
 }
-.search-in{
+
+.search-in {
   background-color: #fff;
   border-radius: 5rpx;
   height: 60rpx;
@@ -13,38 +15,58 @@
   align-items: center;
   padding-left: 30rpx;
 }
-.search-text{
+
+.search-text {
   font-size: 26rpx;
   margin-left: 10rpx;
 }
 
 /* 2.0 tab 栏 */
-.tabs{
+
+.tabs {
   display: flex;
   border-bottom: 1rpx solid #ddd;
 }
-.tabs-item{
+
+.tabs-item {
   flex: 1;
   text-align: center;
   line-height: 100rpx;
 }
-.tabs-item.active{
-  color:#eb4450;
+
+.tabs-item.active {
+  color: #eb4450;
 }
+
 /* 3.0 商品列表 */
-.goods-item{
+
+.goods-item {
   display: flex;
   border-bottom: 1rpx solid #ddd;
   padding: 20rpx;
 }
-.goods-item-image{
+
+.goods-item-image {
   width: 200rpx;
   height: 200rpx;
   flex-shrink: 0;
   margin-right: 20rpx;
 }
-.goods-item-info{
+
+.goods-item-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.goods-item-info-name {
+  /* 超出 2 行变成省略号 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.goods-item-info-price {
+  color: #eb4450;
 }

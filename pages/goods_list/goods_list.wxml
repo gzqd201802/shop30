@@ -2,7 +2,7 @@
 <view class="search">
   <view class="search-in">
     <icon class="search-icon" size="32rpx" type="search"></icon>
-    <text class="search-text">{{ keyword }}</text>
+    <text class="search-text">{{ query }}</text>
   </view>
 </view>
 <!-- 2.0 tab 栏 -->
@@ -15,7 +15,8 @@
 <view class="goods-list">
   <block wx:for="{{ goods }}" wx:key="goods_id">
     <view class="goods-item">
-      <image class="goods-item-image" src="{{ item.goods_small_logo }}"></image>
+      <!-- 利用短路运算实现图片加载失败，显示占位图 -->
+      <image class="goods-item-image" src="{{ item.goods_small_logo || '/images/default.png' }}"></image>
       <view class="goods-item-info">
         <view class="goods-item-info-name">{{ item.goods_name }}</view>
         <view class="goods-item-info-price">￥{{ item.goods_price }}</view>

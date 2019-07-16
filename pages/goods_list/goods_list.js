@@ -10,9 +10,10 @@ Page({
    */
   data: {
     // 初始化关键词
-    keyword: "",
+    query: "",
     activeIndex: 0,
-    goods: []
+    goods: [],
+    cid: 0
   },
 
   /**
@@ -21,20 +22,27 @@ Page({
   onLoad: function(options) {
     // 解构获取页面参数
     const {
-      keyword
+      query,
+      cid
     } = options;
     // 更新数据
     this.setData({
-      keyword
+      query,
+      cid
     });
     // 调用
-    this.getListData(keyword);
+    this.getListData(query, cid);
   },
-
-  getListData(keyword) {
+  // 用于请求列表的方法
+  getListData(query, cid) {
 
     request({
-        url: "goods/search?query=" + keyword
+        url: "goods/search",
+        // 请求参数
+        data: {
+          query,
+          cid
+        }
       })
       .then(res => {
         console.log(res);
