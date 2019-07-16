@@ -93,6 +93,34 @@ Page({
     });
   },
 
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
+    console.log("用户下拉页面时候触发");
+    // 1. 页面重新从 1 开始，商品列表先清空
+    const {
+      query,
+      cid,
+      pagesize
+    } = this.data;
+
+    // 重新设置请求页码
+    const pagenum = 1;
+    // 把页面数据中的 列表清空
+    this.setData({
+      pagenum,
+      goods: [],
+      hasMore: true
+    })
+    // 发起新的请求
+    this.getListData({
+      query,
+      cid,
+      pagenum,
+      pagesize
+    })
+  },
   // 用于请求列表的方法
   getListData(params) {
 
@@ -123,7 +151,8 @@ Page({
             hasMore: false
           });
         }
-
+        // 在用户请求数据完成后，就停止下拉动画
+        wx.stopPullDownRefresh();
       });
 
   },
@@ -156,12 +185,6 @@ Page({
     console.log("onUnload--生命周期函数--监听页面卸载");
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
 
 
   /**
