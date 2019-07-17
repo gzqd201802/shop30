@@ -2,7 +2,7 @@
 <swiper class="slider" indicator-dots autoplay circular>
   <block wx:for="{{  goods_all.pics }}" wx:key="pics_id">
     <swiper-item>
-      <image class="slider-image" src="{{ item.pics_big_url }}"></image>
+      <image bindtap="previewImage" data-current="{{ item.pics_big_url }}" class="slider-image" src="{{ item.pics_big_url }}"></image>
     </swiper-item>
   </block>
 </swiper>

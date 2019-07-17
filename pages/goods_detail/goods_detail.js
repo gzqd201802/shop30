@@ -70,7 +70,23 @@ Page({
 
 
   },
+  // 在新页面中全屏预览图片
+  previewImage(event) {
+    // 结构当前点击的图片链接
+    const {
+      current
+    } = event.currentTarget.dataset;
 
+    // 通过 map 迭代方法，把数组对象，提取成数组字符串
+    const urls = this.data.goods_all.pics.map(item => item.pics_big_url);
+    
+    // 调用预览图片功能，在手机中可以看大图，可以保存或发送好友
+    wx.previewImage({
+      current, // 当前显示图片的http链接
+      urls, // 需要预览的图片http链接列表
+    });
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
