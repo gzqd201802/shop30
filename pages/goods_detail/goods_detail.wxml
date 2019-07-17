@@ -12,7 +12,7 @@
   <view class="goods-info-main">
     <view class="goods-info-main-left">商品名称商品名称商品名称</view>
     <view class="goods-info-main-right">
-      <view class="goods-info-main-right-icon">图</view>
+      <view class="goods-info-main-right-icon iconfont icon-shoucang"></view>
       <view class="goods-info-main-right-text">收藏</view>
     </view>
   </view>
@@ -25,11 +25,11 @@
 <!-- 4.0 底部固定栏 -->
 <view class="fixed-bar">
   <view class="fixed-bar-group">
-    <text class="fixed-bar-group-icon">图</text>
+    <text class="fixed-bar-group-icon iconfont icon-kefu"></text>
     <text class="fixed-bar-group-text">联系客服</text>
   </view>
   <view class="fixed-bar-group">
-    <text class="fixed-bar-group-icon">图</text>
+    <text class="fixed-bar-group-icon iconfont icon-gouwuche"></text>
     <text class="fixed-bar-group-text">购物车</text>
   </view>
   <view class="fixed-bar-button">

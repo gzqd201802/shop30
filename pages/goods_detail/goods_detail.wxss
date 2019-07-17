@@ -60,7 +60,9 @@
   align-items: center;
   color: #999;
 }
-
+.fixed-bar-group-icon{
+  font-size:40rpx;
+}
 .fixed-bar-group-text {
   font-size: 24rpx;
 }
