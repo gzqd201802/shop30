@@ -1,16 +1,16 @@
 <!-- 1.0 轮播图 -->
 <swiper class="slider" indicator-dots autoplay circular>
-  <block wx:for="{{  5 }}" wx:key="">
+  <block wx:for="{{  goods_all.pics }}" wx:key="pics_id">
     <swiper-item>
-      <image class="slider-image" src=""></image>
+      <image class="slider-image" src="{{ item.pics_big_url }}"></image>
     </swiper-item>
   </block>
 </swiper>
 <!-- 2.0 商品信息 -->
 <view class="goods-info">
-  <view class="goods-info-price">￥279</view>
+  <view class="goods-info-price">￥{{ goods_all.goods_price }}</view>
   <view class="goods-info-main">
-    <view class="goods-info-main-left">商品名称商品名称商品名称</view>
+    <view class="goods-info-main-left">{{ goods_all.goods_name }}</view>
     <view class="goods-info-main-right">
       <view class="goods-info-main-right-icon iconfont icon-shoucang"></view>
       <view class="goods-info-main-right-text">收藏</view>
@@ -20,7 +20,12 @@
     快递：免运费
   </view>
 </view>
+<!-- 创建分区分隔盒子 -->
+<view class="divider"></view>
 <!-- 3.0 富文本展示 -->
+<view class="goods-detail-title">图片详情</view>
+<view class="divider"></view>
+<rich-text class="goods-detail-rich" nodes="{{ goods_all.goods_introduce }}"></rich-text>
 
 <!-- 4.0 底部固定栏 -->
 <view class="fixed-bar">

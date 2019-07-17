@@ -41,6 +41,15 @@
   font-size: 24rpx;
 }
 
+.goods-detail-title{
+  line-height: 80rpx;
+  padding:0 20rpx;
+}
+/* 去除小程序富文本组件图片的缝隙 */
+.goods-detail-rich{
+  font-size: 0;
+}
+
 /* 4.0 底部固定栏 */
 
 .fixed-bar {

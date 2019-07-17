@@ -6,3 +6,8 @@ image{
   background-color: #f2f2f2;
   vertical-align: top;
 }
+
+.divider{
+  height: 20rpx;
+  background-color: #f4f4f4;
+}
