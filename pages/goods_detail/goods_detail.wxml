@@ -37,7 +37,7 @@
     <text class="fixed-bar-group-icon iconfont icon-gouwuche"></text>
     <text class="fixed-bar-group-text">购物车</text>
   </view>
-  <view class="fixed-bar-button">
+  <view class="fixed-bar-button" bindtap="addToCart">
     加入购物车
   </view>
   <view class="fixed-bar-button">
