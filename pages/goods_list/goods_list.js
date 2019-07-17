@@ -123,7 +123,11 @@ Page({
   },
   // 用于请求列表的方法
   getListData(params) {
-
+    // 如果从搜索页过来，cid 的结果是 undefined
+    // undefined 时候，利用 delete 关键词删除参数上多余的 params.cid
+    if (!params.cid) delete params.cid;
+    
+    // 发起请求
     request({
         url: "goods/search",
         // 请求参数

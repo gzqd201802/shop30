@@ -2,7 +2,7 @@
 <view class="search">
   <view class="search-in">
     <icon class="search-icon" size="32rpx" type="search"></icon>
-    <input class="search-input" type="text" confirm-type="search" value="{{ query }}" bindinput="inputChange" bindconfirm="inputSubmit" placeholder="请输入你想要的商品"></input>
+    <input class="search-input" type="text" confirm-type="search" value="{{ query }}" bindinput="inputChange" bindconfirm="inputSubmit" bindblur="inputBlur" placeholder="请输入你想要的商品"></input>
   </view>
 </view>
 <!-- 2.0 历史搜索 -->
@@ -13,7 +13,7 @@
   </view>
   <view class="search-history-list">
     <block wx:for="{{ historyList }}" wx:key="*this">
-      <view class="search-history-item">{{ item }}</view>
+      <navigator url="/pages/goods_list/goods_list?query={{ item }}" class="search-history-item">{{ item }}</navigator>
     </block>
   </view>
 </view>

@@ -62,6 +62,11 @@ Page({
     }, 500);
 
   },
+  inputBlur(){
+    this.setData({
+      showTips: false
+    });
+  },
   // 获取搜索提示数据
   getTipsData(value) {
     request({
