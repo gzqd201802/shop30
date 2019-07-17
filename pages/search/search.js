@@ -2,6 +2,9 @@ const {
   request
 } = require("../../utils/request.js");
 
+// 变量也可以在 Page 函数外部创建
+// let timer = null;
+
 // pages/search/search.js
 Page({
 
@@ -16,10 +19,14 @@ Page({
     showTips: false
   },
 
+  // 添加自定义数据，存放定时器的变量名
+  timer: null,
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
     // 解构页面参数
     const {
       query
@@ -37,6 +44,26 @@ Page({
       value
     } = event.detail;
     // console.log(value);
+    // 在请求前，先判断用户输入框是否为空
+    if (!value.trim()) {
+      // 隐藏搜索提示
+      this.setData({
+        showTips: false
+      });
+      // 如果没有内容，return 退出函数，不发起请求了
+      return;
+    }
+    // 清除上一个启动的定时器
+    clearTimeout(this.timer);
+    // 通过定时器让请求等一等，再发送，减少多余请求
+    this.timer = setTimeout(() => {
+      // 调用方法，获取搜索提示数据
+      this.getTipsData(value);
+    }, 500);
+
+  },
+  // 获取搜索提示数据
+  getTipsData(value) {
     request({
         url: 'goods/qsearch',
         data: {
@@ -52,13 +79,14 @@ Page({
           this.setData({
             showTips: true
           });
-        }else{
+        } else {
           this.setData({
             showTips: false
           });
         }
       });
   },
+
 
   // bindconfirm="inputSubmit" 当用户按下键盘右下角完成时候触发
   inputSubmit(event) {

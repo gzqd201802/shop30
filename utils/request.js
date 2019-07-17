@@ -5,22 +5,24 @@
 // }
 const request = (param) => {
 
-  // 基准路径
+  // 1基准路径
   const baseURL = 'https://api.zbztb.cn/api/public/v1/';
 
-  // 显示加载提示框
+  // 2显示加载提示框
   wx.showLoading({
     title: '疯狂加载中...',
   });
 
+  // 调用 request 函数时，内部返回 Promise 对象
+  // 方便我们通过 .then() 语法执行成功时候的回调函数
   return new Promise((resolve, reject) => {
-    // 请求发送
+    // 3请求发送
     wx.request({
-      // 展开传递的请求对象
+      // 4展开传递的请求对象
       ...param,
-      // url 请求地址 = 基准路径 + 参数中 url
+      // 5url 请求地址 = 基准路径 + 参数中 url
       url: baseURL + param.url,
-      // 请求成功的回调函数
+      // 6请求成功的回调函数
       success: res => {
         const {
           message
@@ -28,11 +30,11 @@ const request = (param) => {
         // 请求成功执行 resolve，并传输 message 数据
         resolve(message);
       },
-      // 请求失败的回调函数
+      // 7请求失败的回调函数
       fail: err => {
         reject(err);
       },
-      // 请求结束都会执行
+      // 8请求结束都会执行
       complete: res => {
         // 隐藏记载提示框
         wx.hideLoading();
