@@ -22,6 +22,6 @@
 <!-- 3.0 搜索提示框 -->
 <scroll-view scroll-y class="search-tips" hidden="{{ !showTips }}">
   <block wx:for="{{ tipsList }}" wx:key="goods_id">
-    <view class="search-tips-item">{{ item.goods_name }}</view>
+    <navigator url="/pages/goods_detail/goods_detail?goods_id={{ item.goods_id }}" class="search-tips-item">{{ item.goods_name }}</navigator>
   </block>
 </scroll-view>

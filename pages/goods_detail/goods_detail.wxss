@@ -1,1 +1,79 @@
-/* pages/goods_detail/goods_detail.wxss */
+/* 1.0 轮播图 */
+
+.slider, .slider-image {
+  width: 100%;
+  height: 750rpx;
+}
+
+/* 2.0 商品信息 */
+
+.goods-info {
+  padding: 20rpx;
+}
+
+.goods-info-price {
+  color: #eb4450;
+  font-size: 40rpx;
+}
+
+.goods-info-main {
+  display: flex;
+  margin: 20rpx 0;
+}
+
+.goods-info-main-left {
+  flex: 1;
+  padding-right: 20rpx;
+}
+
+.goods-info-main-right {
+  width: 150rpx;
+  flex-shrink: 0;
+  border-left: 1rpx solid #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+}
+
+.goods-info-main-right-text {
+  font-size: 24rpx;
+}
+
+/* 4.0 底部固定栏 */
+
+.fixed-bar {
+  position: fixed;
+  width: 100%;
+  height: 98rpx;
+  bottom: 0;
+  background-color: #fff;
+  display: flex;
+}
+
+.fixed-bar-group {
+  width: 150rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+}
+
+.fixed-bar-group-text {
+  font-size: 24rpx;
+}
+
+.fixed-bar-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #f4b73f;
+}
+
+.fixed-bar-button:last-child {
+  background-color: #eb4450;
+}

@@ -1,2 +1,41 @@
-<!--pages/goods_detail/goods_detail.wxml-->
-<text>pages/goods_detail/goods_detail.wxml</text>
+<!-- 1.0 轮播图 -->
+<swiper class="slider" indicator-dots autoplay circular>
+  <block wx:for="{{  5 }}" wx:key="">
+    <swiper-item>
+      <image class="slider-image" src=""></image>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 2.0 商品信息 -->
+<view class="goods-info">
+  <view class="goods-info-price">￥279</view>
+  <view class="goods-info-main">
+    <view class="goods-info-main-left">商品名称商品名称商品名称</view>
+    <view class="goods-info-main-right">
+      <view class="goods-info-main-right-icon">图</view>
+      <view class="goods-info-main-right-text">收藏</view>
+    </view>
+  </view>
+  <view class="goods-info-bottom">
+    快递：免运费
+  </view>
+</view>
+<!-- 3.0 富文本展示 -->
+
+<!-- 4.0 底部固定栏 -->
+<view class="fixed-bar">
+  <view class="fixed-bar-group">
+    <text class="fixed-bar-group-icon">图</text>
+    <text class="fixed-bar-group-text">联系客服</text>
+  </view>
+  <view class="fixed-bar-group">
+    <text class="fixed-bar-group-icon">图</text>
+    <text class="fixed-bar-group-text">购物车</text>
+  </view>
+  <view class="fixed-bar-button">
+    加入购物车
+  </view>
+  <view class="fixed-bar-button">
+    立即购买
+  </view>
+</view>
