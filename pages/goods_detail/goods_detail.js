@@ -50,6 +50,18 @@ Page({
       })
       .then(res => {
         // console.log(res);
+        // 获取设备系统信息
+        wx.getSystemInfo({
+          success(result) {
+            // .indexOf()       如果不包含字符串，返回 -1，包含返回字符串索引值
+            // .includes()      是否包含字符串，返回结果 布尔类型
+            if (result.system.toLowerCase().includes('ios')) {
+              // 对富文本 webp 图片格式进行替换操作，因为 ios 不支持 webp
+              res.goods_introduce = res.goods_introduce.replace(/\?.+?webp/g, '');
+            }
+          }
+        });
+        // console.log(res.goods_introduce);
         // 把所有的数据都添加到页面 data 中
         this.setData({
           goods_all: res
