@@ -122,6 +122,10 @@ Page({
     // });
     // 2.2 同步版本
     wx.setStorageSync('historyList', historyList);
+    // 按键盘搜索按钮，应该也要跳转到列表页，把输入框的内容作为页面参数传递
+    wx.redirectTo({
+      url: '/pages/goods_list/goods_list?query=' + value,
+    });
   },
 
   /**

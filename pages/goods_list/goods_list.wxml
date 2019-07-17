@@ -1,6 +1,6 @@
 <!-- 1.0 搜索框 -->
 <!-- 页面跳转写法1：通过 navigator 标签跳转 -->
-<navigator url="/pages/search/search?query={{ query }}" class="search">
+<navigator open-type="redirect" url="/pages/search/search?query={{ query }}" class="search">
   <view class="search-in">
     <icon class="search-icon" size="32rpx" type="search"></icon>
     <text class="search-text">{{ query }}</text>

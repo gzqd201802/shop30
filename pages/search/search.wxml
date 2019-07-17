@@ -13,7 +13,8 @@
   </view>
   <view class="search-history-list">
     <block wx:for="{{ historyList }}" wx:key="*this">
-      <navigator url="/pages/goods_list/goods_list?query={{ item }}" class="search-history-item">{{ item }}</navigator>
+      <!-- open-type="redirect" 替换页面 -->
+      <navigator open-type="redirect" url="/pages/goods_list/goods_list?query={{ item }}" class="search-history-item">{{ item }}</navigator>
     </block>
   </view>
 </view>
