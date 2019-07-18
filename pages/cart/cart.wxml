@@ -1,11 +1,11 @@
 <!-- 1.0 用户收货地址 -->
-<view class="address">
+<view class="address" bindtap="chooseAddress">
   <!-- 1.1 用户没有收货地址状态 -->
   <view wx:if="{{ !address.userName }}" class="address-empty">
     <button class="address-empty-button">点击添加收货地址+</button>
   </view>
   <!-- 1.2 用户已经选择收货地址状态 -->
-  <view wx:else class="address-selected" >
+  <view wx:else class="address-selected">
     <view class="address-selected-item">
       <text space="emsp">收货人：{{ address.userName }}   {{ address.telNumber }}</text>
     </view>
