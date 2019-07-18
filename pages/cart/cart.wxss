@@ -33,3 +33,108 @@
   display: block;
   transform: translateX(-20rpx) rotate(45deg);
 }
+
+/* 2.0 购物车列表 */
+.cart{
+  padding-bottom: 120rpx;
+}
+.cart-shop {
+  height: 80rpx;
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.cart-shop-icon {
+  color: #999;
+  margin-right: 10rpx;
+}
+
+.cart-item {
+  display: flex;
+}
+
+.cart-item-left {
+  width: 90rpx;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eb4450;
+}
+
+.cart-item-right {
+  flex: 1;
+  position: relative;
+}
+
+/* 数量计数器 */
+
+.count-group {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  display: flex;
+  width: 200rpx;
+}
+.count-group-btn{
+  border: 4rpx solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50rpx;
+  flex-shrink: 0;
+}
+.count-group-input{
+  text-align: center;
+}
+
+
+/* 3.0 底部固定栏 */
+
+.total {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.total-select {
+  padding-left: 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.total-select-icon {
+  margin-right: 20rpx;
+}
+
+.total-price {
+  flex: 1;
+  padding: 20rpx;
+  text-align: right;
+}
+
+.total-price-number {
+  color: #eb4450;
+}
+
+.total-price-tips {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.total-account {
+  width: 30%;
+  height: 100rpx;
+  background-color: #eb4450;
+  color: #fff;
+  line-height: 100rpx;
+  text-align: center;
+}

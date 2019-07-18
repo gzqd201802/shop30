@@ -26,7 +26,7 @@ Page({
               // 每次关闭设置界面的时候，都尝试调用收货地址功能，开启权限的话自动弹出收货地址
               this.chooseAddressMain();
             }
-          })
+          });
           // 如果用户权限列表中是已授权 true 或者 没有地址授权信息 undefined
         } else if (addressAuth === true || addressAuth === undefined) {
           // 调用收货地址功能

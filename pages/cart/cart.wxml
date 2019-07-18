@@ -14,3 +14,61 @@
     </view>
   </view>
 </view>
+<!-- 调用分隔物 -->
+<view class="divider"></view>
+<!-- 2.0 购物车列表 -->
+<view class="cart">
+  <!-- 2.1 购物车为空 -->
+  <view class="cart-empty" hidden>
+    购物车为空
+  </view>
+  <!-- 2.2 购物车有数据 -->
+  <view class="cart-data">
+    <view class="cart-shop">
+      <text class="cart-shop-icon iconfont icon-dianpu"></text>
+      <text class="cart-shop-name">优购生活馆</text>
+    </view>
+    <view class="cart-list">
+      <blcok wx:for="{{ 5 }}" wx:key="">
+        <view class="cart-item">
+          <view class="cart-item-left">
+            <view class="cart-item-left-icon iconfont icon-xuanze-fill"></view>
+          </view>
+          <view class="cart-item-right">
+            <!-- 商品展示 -->
+            <view bindtap="goToDetail" data-id="{{ item.goods_id }}" class="goods-item">
+              <!-- 利用短路运算实现图片加载失败，显示占位图 -->
+              <image class="goods-item-image" src="{{ item.goods_small_logo || '/images/default.png' }}"></image>
+              <view class="goods-item-info">
+                <view class="goods-item-info-name">{{ item.goods_name || '商品名称' }}</view>
+                <view class="goods-item-info-price">￥{{ item.goods_price || 0 }}</view>
+              </view>
+            </view>
+            <!-- 商品数量计数器 -->
+            <view class="count-group">
+              <view class="count-group-btn">-</view>
+              <input class="count-group-input" type="number" value="1"></input>
+              <view class="count-group-btn">+</view>
+            </view>
+          </view>
+        </view>
+      </blcok>
+    </view>
+  </view>
+</view>
+
+<!-- 3.0 底部固定栏 -->
+
+<view class="total">
+  <view class="total-select">
+    <view class="total-select-icon iconfont icon-xuanze"></view> 全选
+  </view>
+  <view class="total-price">
+    <view class="total-price-group">
+      合计:
+      <text class="total-price-number">￥100</text>
+    </view>
+    <view class="total-price-tips">包含运费</view>
+  </view>
+  <view class="total-account">结算 0 </view>
+</view>
