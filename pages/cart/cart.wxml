@@ -29,10 +29,10 @@
       <text class="cart-shop-name">优购生活馆</text>
     </view>
     <view class="cart-list">
-      <blcok wx:for="{{ 5 }}" wx:key="">
+      <blcok wx:for="{{ cartList }}" wx:key="goods_id">
         <view class="cart-item">
           <view class="cart-item-left">
-            <view class="cart-item-left-icon iconfont icon-xuanze-fill"></view>
+            <view class="cart-item-left-icon iconfont {{ item.selected ? 'icon-xuanze-fill' : 'icon-xuanze' }}"></view>
           </view>
           <view class="cart-item-right">
             <!-- 商品展示 -->
@@ -46,9 +46,17 @@
             </view>
             <!-- 商品数量计数器 -->
             <view class="count-group">
-              <view class="count-group-btn">-</view>
-              <input class="count-group-input" type="number" value="1"></input>
-              <view class="count-group-btn">+</view>
+              <view class="count-group-btn" 
+                bindtap="countChange" 
+                data-num="{{ -1 }}" 
+                data-id="{{ item.goods_id }}"
+              >-</view>
+              <input class="count-group-input" type="number" value="{{ item.count }}"></input>
+              <view class="count-group-btn" 
+                bindtap="countChange" 
+                data-num="{{ 1 }}" 
+                data-id="{{ item.goods_id }}"
+              >+</view>
             </view>
           </view>
         </view>

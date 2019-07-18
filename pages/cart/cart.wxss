@@ -113,6 +113,7 @@
 
 .total-select-icon {
   margin-right: 20rpx;
+  color:#eb4450;
 }
 
 .total-price {

@@ -6,7 +6,9 @@ Page({
    */
   data: {
     // 收货地址数据
-    address: {}
+    address: {},
+    // 购物车数据
+    cartList: {}
   },
   // 点击选择收货地址
   chooseAddress() {
@@ -66,6 +68,33 @@ Page({
     });
   },
 
+  // 商品数量计数器事件
+  countChange(event) {
+    // 解构事件传递的参数
+    const {
+      num,
+      id
+    } = event.currentTarget.dataset;
+
+    // 解构购物车集合
+    const {
+      cartList
+    } = this.data;
+
+    // 数量加减运算
+    cartList[id].count += num;
+    
+
+
+    // 更新视图
+    this.setData({
+      cartList
+    });
+
+    // 更新本地存储
+    wx.setStorageSync('cartList', cartList);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -79,7 +108,8 @@ Page({
   onShow: function() {
     // 页面显示的时候，从本地存储获取数据
     this.setData({
-      address: wx.getStorageSync('address') || {}
+      address: wx.getStorageSync('address') || {},
+      cartList: wx.getStorageSync('cartList') || {}
     });
   },
 
