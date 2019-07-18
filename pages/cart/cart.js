@@ -8,7 +8,9 @@ Page({
     // 收货地址数据
     address: {},
     // 购物车数据
-    cartList: {}
+    cartList: {},
+    // 全选状态
+    checkAllStatus: false
   },
   // 点击选择收货地址
   chooseAddress() {
@@ -124,6 +126,34 @@ Page({
     wx.setStorageSync('cartList', cartList);
   },
 
+  // 点击商品前的选择按钮
+  changeItemSelect(event) {
+    const {
+      id
+    } = event.currentTarget.dataset;
+
+    const {
+      cartList
+    } = this.data;
+
+    cartList[id].selected = !cartList[id].selected;
+
+    // // Object.keys(对象)     返回对象 所有 键名称，数组格式
+    // let result = Object.keys(cartList);
+    // // Object.values(对象)   返回对象 所有 值，数组格式
+    // let result2 = Object.values(cartList);
+
+    // console.log(result2);
+    // every 数组方法，用于检查数据组中是否数据都符合某个规则
+    const checkAllStatus = Object.values(cartList).every(item => item.selected);
+
+    this.setData({
+      checkAllStatus
+    });
+
+    this.setCartListData(cartList);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -139,6 +169,12 @@ Page({
     this.setData({
       address: wx.getStorageSync('address') || {},
       cartList: wx.getStorageSync('cartList') || {}
+    });
+
+    const checkAllStatus = Object.values(this.data.cartList).every(item => item.selected);
+
+    this.setData({
+      checkAllStatus
     });
   },
 

@@ -31,7 +31,7 @@
     <view class="cart-list">
       <blcok wx:for="{{ cartList }}" wx:key="goods_id">
         <view class="cart-item">
-          <view class="cart-item-left">
+          <view class="cart-item-left" bindtap="changeItemSelect" data-id="{{ item.goods_id }}">
             <view class="cart-item-left-icon iconfont {{ item.selected ? 'icon-xuanze-fill' : 'icon-xuanze' }}"></view>
           </view>
           <view class="cart-item-right">
@@ -69,7 +69,7 @@
 
 <view class="total">
   <view class="total-select">
-    <view class="total-select-icon iconfont icon-xuanze"></view> 全选
+    <view class="total-select-icon iconfont {{ checkAllStatus ? 'icon-xuanze-fill' : 'icon-xuanze' }}"></view> 全选
   </view>
   <view class="total-price">
     <view class="total-price-group">
