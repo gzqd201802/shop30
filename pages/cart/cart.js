@@ -83,9 +83,38 @@ Page({
 
     // 数量加减运算
     cartList[id].count += num;
-    
 
+    // 如果数据运算后小于 1，询问用户是否要删除
+    if (cartList[id].count < 1) {
+      console.log("询问用户是否要删除");
+      // 弹出模态窗口
+      wx.showModal({
+        // 标题
+        title: '是否删除商品',
+        content: '',
+        confirmText: '删除',
+        confirmColor: '#eb4450',
+        success: (res) => {
+          // console.log(res);
+          if (res.confirm) {
+            // 用户点击确定，直接把数据删除
+            delete cartList[id];
+          } else if (res.cancel) {
+            // 用户点击取消，数量变回 1
+            cartList[id].count = 1;
+          }
 
+          // 在异步函数内部也要更新数据
+          this.setCartListData(cartList);
+        }
+      })
+    } else {
+      this.setCartListData(cartList);
+    }
+
+  },
+
+  setCartListData(cartList) {
     // 更新视图
     this.setData({
       cartList
