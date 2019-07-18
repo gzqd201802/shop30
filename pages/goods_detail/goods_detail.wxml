@@ -30,13 +30,14 @@
 <!-- 4.0 底部固定栏 -->
 <view class="fixed-bar">
   <view class="fixed-bar-group">
+    <button class="fixed-bar-group-button" open-type="contact">调用客服</button>
     <text class="fixed-bar-group-icon iconfont icon-kefu"></text>
     <text class="fixed-bar-group-text">联系客服</text>
   </view>
-  <view class="fixed-bar-group">
+  <navigator url="/pages/cart/cart" open-type="switchTab" class="fixed-bar-group">
     <text class="fixed-bar-group-icon iconfont icon-gouwuche"></text>
     <text class="fixed-bar-group-text">购物车</text>
-  </view>
+  </navigator>
   <view class="fixed-bar-button" bindtap="addToCart">
     加入购物车
   </view>
