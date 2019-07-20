@@ -1,2 +1,60 @@
-<!--pages/pay/pay.wxml-->
-<text>pages/pay/pay.wxml</text>
+<!-- 1.0 用户收货地址 -->
+<view class="address">
+  <!-- 1.1 用户没有收货地址状态 -->
+  <view wx:if="{{ !address.userName }}" class="address-empty">
+    <button class="address-empty-button">点击添加收货地址+</button>
+  </view>
+  <!-- 1.2 用户已经选择收货地址状态 -->
+  <view wx:else class="address-selected">
+    <view class="address-selected-item">
+      <text space="emsp">收货人：{{ address.userName }}   {{ address.telNumber }}</text>
+    </view>
+    <view class="address-selected-item">
+      <text>收货地址：{{ address.addressInfo }}</text>
+    </view>
+  </view>
+</view>
+<!-- 调用分隔物 -->
+<view class="divider"></view>
+<!-- 2.0 购物车列表 -->
+<view class="cart">
+  <!-- 2.1 购物车为空 -->
+  <view class="cart-empty" hidden>
+    购物车为空
+  </view>
+  <!-- 2.2 购物车有数据 -->
+  <view class="cart-data">
+    <view class="cart-shop">
+      <text class="cart-shop-icon iconfont icon-dianpu"></text>
+      <text class="cart-shop-name">优购生活馆</text>
+    </view>
+    <view class="cart-list">
+      <block wx:for="{{ cartList }}" wx:key="goods_id">
+        <!-- 1.0 仅仅显示选中的商品 -->
+        <view class="cart-item" wx:if="{{ item.selected }}">
+          <view class="cart-item-right">
+            <!-- 商品组件调用 -->
+            <goods-item  item="{{ item }}" />
+            <!-- 商品数量计数器 -->
+            <view class="count-group">
+              <view class="count-group-text">x {{ item.count }}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!-- 3.0 底部固定栏 -->
+
+<view class="total">
+  <view class="total-price">
+    <view class="total-price-group">
+      合计:
+      <text class="total-price-number">￥{{ totalPrice }}</text>
+    </view>
+    <view class="total-price-tips">包含运费</view>
+  </view>
+  <view class="total-account" bindtap="payHandle">支付 {{ accountNumber }} </view>
+</view>
