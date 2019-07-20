@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "goods-item": "/components/goods-item/goods-item"
+  },
   "navigationBarTitleText": "商品列表",
   "enablePullDownRefresh": true,
   "backgroundColor": "#f2f2f2",

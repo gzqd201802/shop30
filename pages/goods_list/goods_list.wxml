@@ -15,14 +15,7 @@
 <!-- 3.0 商品列表 -->
 <view class="goods-list">
   <block wx:for="{{ goods }}" wx:key="goods_id">
-    <!-- 页面跳转写法2：通过 事件绑定 跳转 -->
-    <view bindtap="goToDetail" data-id="{{ item.goods_id }}" class="goods-item">
-      <!-- 利用短路运算实现图片加载失败，显示占位图 -->
-      <image class="goods-item-image" src="{{ item.goods_small_logo || '/images/default.png' }}"></image>
-      <view class="goods-item-info">
-        <view class="goods-item-info-name">{{ item.goods_name }}</view>
-        <view class="goods-item-info-price">￥{{ item.goods_price }}</view>
-      </view>
-    </view>
+    <!-- 调用商品展示组件 -->
+    <goods-item item="{{ item }}" />
   </block>
 </view>

@@ -29,21 +29,14 @@
       <text class="cart-shop-name">优购生活馆</text>
     </view>
     <view class="cart-list">
-      <blcok wx:for="{{ cartList }}" wx:key="goods_id">
+      <block wx:for="{{ cartList }}" wx:key="goods_id">
         <view class="cart-item">
           <view class="cart-item-left" bindtap="changeItemSelect" data-id="{{ item.goods_id }}">
             <view class="cart-item-left-icon iconfont {{ item.selected ? 'icon-xuanze-fill' : 'icon-xuanze' }}"></view>
           </view>
           <view class="cart-item-right">
-            <!-- 商品展示 -->
-            <view bindtap="goToDetail" data-id="{{ item.goods_id }}" class="goods-item">
-              <!-- 利用短路运算实现图片加载失败，显示占位图 -->
-              <image class="goods-item-image" src="{{ item.goods_small_logo || '/images/default.png' }}"></image>
-              <view class="goods-item-info">
-                <view class="goods-item-info-name">{{ item.goods_name || '商品名称' }}</view>
-                <view class="goods-item-info-price">￥{{ item.goods_price || 0 }}</view>
-              </view>
-            </view>
+            <!-- 商品组件调用 -->
+            <goods-item  item="{{ item }}" />
             <!-- 商品数量计数器 -->
             <view class="count-group">
               <view class="count-group-btn" 
@@ -61,7 +54,7 @@
             </view>
           </view>
         </view>
-      </blcok>
+      </block>
     </view>
   </view>
 </view>
@@ -79,5 +72,5 @@
     </view>
     <view class="total-price-tips">包含运费</view>
   </view>
-  <view class="total-account">结算 {{ accountNumber }} </view>
+  <view class="total-account" bindtap="goToPay">结算 {{ accountNumber }} </view>
 </view>
