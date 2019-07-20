@@ -71,7 +71,8 @@ Page({
     const { order_number } = (await this.getOrderNumber());
     console.log('1. 创建订单，获取订单号', order_number);
     // 2. 根据订单号，准备预支付
-    console.log('2. 根据订单号，准备预支付')
+    const { pay } = await this.getPayOrder(order_number);
+    console.log('2. 根据订单号，准备预支付', pay);
     // 3. 根据预支付的数据，调用微信支付接口
     // 4. 微信支付结束后，查询订单检查支付状态
 
@@ -111,6 +112,19 @@ Page({
         "consignee_addr": address.addressInfo,
         // 购物车中选中的商品数据
         "goods": goods
+      }
+    })
+  },
+
+  // 2. 根据订单号，准备预支付
+  getPayOrder(order_number){
+    // 函数内部返回 promise 对象
+    return request({
+      url:'my/orders/req_unifiedorder',
+      method:'POST',
+      // 根据 order_number 创建预支付订单
+      data:{
+        order_number
       }
     })
   },
