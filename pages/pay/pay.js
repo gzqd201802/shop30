@@ -1,3 +1,8 @@
+// 引入之前封装的 request 方法
+const {
+  request
+} = require("../../utils/request.js");
+
 // pages/cart/cart.js
 Page({
 
@@ -44,9 +49,9 @@ Page({
     });
 
   },
-  
+
   // 点击支付按钮触发的事件
-  payHandle(){
+  payHandle() {
 
     console.log('支付的逻辑都写到该事件内部');
 
@@ -54,14 +59,60 @@ Page({
     // jwt
     // 获取本地存储是否有 token ，如果没有 token 就跳转到获取 token 授权登录页
     const token = wx.getStorageSync('token');
-    if (!token){
+    if (!token) {
       // 跳转到获取 token 的页面
       wx.navigateTo({
         url: '/pages/auth/auth',
       })
     }
 
-  }, 
+    // 支付流程
+    // 1. 创建订单，获取订单号
+    this.getOrderNumber();
+    // 2. 根据订单号，准备预支付
+    // 3. 根据预支付的数据，调用微信支付接口
+    // 4. 微信支付结束后，查询订单检查支付状态
+
+
+  },
+
+  // 1. 创建订单，获取订单号
+  getOrderNumber() {
+    // 订单请求参数较为复杂
+    const {
+      totalPrice,
+      address,
+      cartList
+    } = this.data;
+
+    // 1. 遍历购物车选中的商品
+    const goods =
+      // 提取对象键名称
+      Object.keys(cartList)
+      // 把键名称进行过滤，只保留选中的商品
+      .filter(id => cartList[id].selected)
+      // 根据选中商品的 id 值构建新的对象，用于创建订单
+      .map(id => {
+        return {
+          "goods_id": cartList[id].goods_id,
+          "goods_price": cartList[id].goods_price,
+          "goods_number": cartList[id].count
+        }
+      });
+
+
+    request({
+      url: 'my/orders/create',
+      method: 'POST',
+      data: {
+        "order_price": totalPrice,
+        "consignee_addr": address.addressInfo,
+        // 购物车中选中的商品数据
+        "goods": goods
+      }
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面显示
