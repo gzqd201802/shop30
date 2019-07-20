@@ -177,6 +177,28 @@ Page({
     this.setCartListData(cartList);
   },
 
+  // 全选按钮点击事件
+  changeAllSelect(){
+    let {
+      checkAllStatus,
+      cartList
+    } = this.data;
+    // 自身取反
+    checkAllStatus = !checkAllStatus;
+    // 遍历购物车，把选择状态改成和全选状态一样
+    Object.keys(cartList).forEach(id => {
+      cartList[id].selected = checkAllStatus;
+    });
+
+    // 更新自身状态
+    this.setData({
+      checkAllStatus
+    });
+    
+    // 更新购物车数据
+    this.setCartListData(cartList);
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -193,7 +215,7 @@ Page({
       address: wx.getStorageSync('address') || {},
       cartList: wx.getStorageSync('cartList') || {}
     });
-
+    // 获取全选状态
     const checkAllStatus = Object.values(this.data.cartList).every(item => item.selected);
 
     this.setData({

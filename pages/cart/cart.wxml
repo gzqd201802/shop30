@@ -69,15 +69,15 @@
 <!-- 3.0 底部固定栏 -->
 
 <view class="total">
-  <view class="total-select">
+  <view class="total-select" bindtap="changeAllSelect">
     <view class="total-select-icon iconfont {{ checkAllStatus ? 'icon-xuanze-fill' : 'icon-xuanze' }}"></view> 全选
   </view>
   <view class="total-price">
     <view class="total-price-group">
       合计:
-      <text class="total-price-number">￥100</text>
+      <text class="total-price-number">￥{{ totalPrice }}</text>
     </view>
     <view class="total-price-tips">包含运费</view>
   </view>
-  <view class="total-account">结算 0 </view>
+  <view class="total-account">结算 {{ accountNumber }} </view>
 </view>
