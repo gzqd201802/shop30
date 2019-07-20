@@ -1,0 +1,33 @@
+
+/* 3.0 商品列表 */
+
+.goods-item {
+  display: flex;
+  border-bottom: 1rpx solid #ddd;
+  padding: 20rpx;
+}
+
+.goods-item-image {
+  width: 200rpx;
+  height: 200rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+}
+
+.goods-item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goods-item-info-name {
+  /* 超出 2 行变成省略号 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.goods-item-info-price {
+  color: #eb4450;
+}

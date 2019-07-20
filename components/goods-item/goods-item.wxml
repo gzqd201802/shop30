@@ -1,0 +1,9 @@
+<!-- 商品展示 -->
+<view data-id="{{ item.goods_id }}" class="goods-item">
+  <!-- 利用短路运算实现图片加载失败，显示占位图 -->
+  <image bindtap="goToDetail" class="goods-item-image" src="{{ item.goods_small_logo || '/images/default.png' }}"></image>
+  <view class="goods-item-info">
+    <view bindtap="goToDetail" class="goods-item-info-name">{{ item.goods_name || '商品名称' }}</view>
+    <view class="goods-item-info-price">￥{{ item.goods_price || 0 }}</view>
+  </view>
+</view>
