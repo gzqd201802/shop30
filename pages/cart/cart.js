@@ -115,6 +115,29 @@ Page({
     }
 
   },
+  // 计数器失去焦点触发
+  countBlur(event) {
+    // 从事件对象中，获取事件参数
+    const {
+      id
+    } = event.currentTarget.dataset;
+    // 从事件对象中，获取输入框的值
+    const {
+      value
+    } = event.detail;
+
+    // 解构购物车数据
+    let {
+      cartList
+    } = this.data;
+
+    // 修改购物车商品数量
+    cartList[id].count = +value;
+
+    // 更新购物车数据
+    this.setCartListData(cartList);
+
+  },
 
   setCartListData(cartList) {
     // 更新视图

@@ -51,7 +51,8 @@
                 data-num="{{ -1 }}" 
                 data-id="{{ item.goods_id }}"
               >-</view>
-              <input class="count-group-input" type="number" value="{{ item.count }}"></input>
+              <input bindblur="countBlur" 
+                data-id="{{ item.goods_id }}" class="count-group-input" type="number" value="{{ item.count }}"></input>
               <view class="count-group-btn" 
                 bindtap="countChange" 
                 data-num="{{ 1 }}" 
