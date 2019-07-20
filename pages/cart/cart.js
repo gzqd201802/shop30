@@ -10,7 +10,11 @@ Page({
     // 购物车数据
     cartList: {},
     // 全选状态
-    checkAllStatus: false
+    checkAllStatus: false,
+    // 合计总价格
+    totalPrice: 0,
+    // 结算个数
+    accountNumber: 0
   },
   // 点击选择收货地址
   chooseAddress() {
@@ -139,6 +143,7 @@ Page({
 
   },
 
+  // 更新购物车数据
   setCartListData(cartList) {
     // 更新视图
     this.setData({
@@ -147,6 +152,37 @@ Page({
 
     // 更新本地存储
     wx.setStorageSync('cartList', cartList);
+
+    // 更新购物车数据同时，调用更新总价格
+    this.setTotalPrice();
+  },
+
+  // 封装用于计算总金额和结算数量的方法
+  setTotalPrice() {
+    const {
+      cartList
+    } = this.data;
+
+    // 创建用于存放合计总价格的变量
+    let totalPrice = 0;
+    // 创建用户统计结算个数的变量
+    let accountNumber = 0;
+
+    // 遍历购物车数据，选中的商品，累加到总价格总
+    Object.values(cartList).forEach(item => {
+      if (item.selected) {
+        // 总价格计算
+        totalPrice += item.count * item.goods_price;
+        // 选中多少个商品
+        accountNumber++;
+      }
+    });
+    
+    this.setData({
+      totalPrice,
+      accountNumber
+    });
+
   },
 
   // 点击商品前的选择按钮
@@ -178,7 +214,7 @@ Page({
   },
 
   // 全选按钮点击事件
-  changeAllSelect(){
+  changeAllSelect() {
     let {
       checkAllStatus,
       cartList
@@ -194,7 +230,7 @@ Page({
     this.setData({
       checkAllStatus
     });
-    
+
     // 更新购物车数据
     this.setCartListData(cartList);
   },
@@ -217,7 +253,7 @@ Page({
     });
     // 获取全选状态
     const checkAllStatus = Object.values(this.data.cartList).every(item => item.selected);
-
+    this.setTotalPrice();
     this.setData({
       checkAllStatus
     });
