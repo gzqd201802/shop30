@@ -8,6 +8,23 @@ const request = (param) => {
   // 1基准路径
   const baseURL = 'https://api.zbztb.cn/api/public/v1/';
 
+  // 1. 判断参数 url 中是否包含 my/
+  if (param.url.includes('my/')) {
+    console.log('my/ 私有路径，在请求中带上 token');
+    // 如果私有路径，在请求头中，添加 token
+    // 2. 先获取本地 token
+    const token = wx.getStorageSync('token');
+    if (token) {
+      param.header = {
+        "Authorization": token
+      }
+    }else{
+      wx.navigateTo({
+        url: '/pages/auth/auth',
+      });
+    }
+  }
+
   // 2显示加载提示框
   wx.showLoading({
     title: '疯狂加载中...',
