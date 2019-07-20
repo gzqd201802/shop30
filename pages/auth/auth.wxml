@@ -1,2 +1,5 @@
-<!--pages/auth/auth.wxml-->
-<text>pages/auth/auth.wxml</text>
+
+<!-- type="primary"  绿色按钮 -->
+<!-- open-type="getUserInfo" 获取用户信息 -->
+<!-- bindgetuserinfo="getUserInfo" 在事件的回调函数内部获取信息 -->
+<button type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权登录</button>
