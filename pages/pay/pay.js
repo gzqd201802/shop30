@@ -50,6 +50,17 @@ Page({
 
     console.log('支付的逻辑都写到该事件内部');
 
+    // 1.0 先检查用户是否已经是登录的，如果没有登录就跳转到登录页面
+    // jwt
+    // 获取本地存储是否有 token ，如果没有 token 就跳转到获取 token 授权登录页
+    const token = wx.getStorageSync('token');
+    if (!token){
+      // 跳转到获取 token 的页面
+      wx.navigateTo({
+        url: '/pages/auth/auth',
+      })
+    }
+
   }, 
 
   /**

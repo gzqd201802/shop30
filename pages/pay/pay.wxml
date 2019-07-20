@@ -56,5 +56,5 @@
     </view>
     <view class="total-price-tips">包含运费</view>
   </view>
-  <view class="total-account" bindtap="payHandle">支付 {{ accountNumber }} </view>
+  <view class="total-account" bindtap="payHandle">支付 ({{ accountNumber }}) </view>
 </view>
