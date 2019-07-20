@@ -51,7 +51,7 @@ Page({
   },
 
   // 点击支付按钮触发的事件
-  payHandle() {
+  async payHandle() {
 
     console.log('支付的逻辑都写到该事件内部');
 
@@ -68,8 +68,10 @@ Page({
 
     // 支付流程
     // 1. 创建订单，获取订单号
-    this.getOrderNumber();
+    const { order_number } = (await this.getOrderNumber());
+    console.log('1. 创建订单，获取订单号', order_number);
     // 2. 根据订单号，准备预支付
+    console.log('2. 根据订单号，准备预支付')
     // 3. 根据预支付的数据，调用微信支付接口
     // 4. 微信支付结束后，查询订单检查支付状态
 
@@ -100,8 +102,8 @@ Page({
         }
       });
 
-
-    request({
+    // 返回请求的 promise 对象
+    return request({
       url: 'my/orders/create',
       method: 'POST',
       data: {
