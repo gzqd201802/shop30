@@ -1,7 +1,7 @@
 <!-- 1.0 搜索框 -->
-<view class="search">
+<navigator url="/pages/search/search" class="search">
   <view class="search-in">
     <icon class="search-icon" size="32rpx" type="search"></icon>
     <text class="search-text">搜索</text>
   </view>
-</view>
+</navigator>

@@ -83,7 +83,7 @@ Page({
     // 更新页面 data 中的 pagenum
     this.setData({
       pagenum
-    })
+    });
     // 重新发起请求请求下一页数据
     this.getListData({
       query,
@@ -160,17 +160,7 @@ Page({
       });
 
   },
-  // 点击商品，跳转到商品详情页
-  goToDetail(event) {
-    // 从事件对象中提取 商品 id
-    const {
-      id
-    } = event.currentTarget.dataset;
-    // 通过 wxAPI 跳转页面
-    wx.navigateTo({
-      url: '/pages/goods_detail/goods_detail?goods_id=' + id,
-    });
-  },
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
