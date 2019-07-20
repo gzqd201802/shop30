@@ -3,6 +3,9 @@ const {
   request
 } = require("../../utils/request.js");
 
+// 在需要用到 async await 的页面单独引入依赖库，前面变量名固定不要修改 regeneratorRuntime
+const regeneratorRuntime = require('../../lib/runtime/runtime.js');
+
 // pages/cart/cart.js
 Page({
 
@@ -66,14 +69,16 @@ Page({
       })
     }
 
-    // 支付流程
+    // 支付流程 - 利用 await 把异步变同步，从上往下一步步执行
     // 1. 创建订单，获取订单号
-    const { order_number } = (await this.getOrderNumber());
+    const { order_number } = await this.getOrderNumber();
     console.log('1. 创建订单，获取订单号', order_number);
     // 2. 根据订单号，准备预支付
     const { pay } = await this.getPayOrder(order_number);
     console.log('2. 根据订单号，准备预支付', pay);
     // 3. 根据预支付的数据，调用微信支付接口
+    const res = await this.getRequestPayment(pay);
+    console.log('3. 根据预支付的数据，调用微信支付接口', res);
     // 4. 微信支付结束后，查询订单检查支付状态
 
 
@@ -117,18 +122,35 @@ Page({
   },
 
   // 2. 根据订单号，准备预支付
-  getPayOrder(order_number){
+  getPayOrder(order_number) {
     // 函数内部返回 promise 对象
     return request({
-      url:'my/orders/req_unifiedorder',
-      method:'POST',
+      url: 'my/orders/req_unifiedorder',
+      method: 'POST',
       // 根据 order_number 创建预支付订单
-      data:{
+      data: {
         order_number
       }
     })
   },
 
+  // 3. 根据预支付的数据，调用微信支付接口
+  getRequestPayment(pay) {
+    // 把微信的方法改造成 Promise 写法
+    return new Promise((resolve, reject) => {
+      wx.requestPayment({
+        // 解构支付对象
+        ...pay,
+        success: res => {
+          resolve(res);
+        },
+        fail: err => {
+          reject(err);
+        }
+      })
+    })
+
+  },
 
   /**
    * 生命周期函数--监听页面显示
