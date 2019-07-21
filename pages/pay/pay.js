@@ -69,19 +69,39 @@ Page({
       })
     }
 
-    // 支付流程 - 利用 await 把异步变同步，从上往下一步步执行
-    // 1. 创建订单，获取订单号
-    const { order_number } = await this.getOrderNumber();
-    console.log('1. 创建订单，获取订单号', order_number);
-    // 2. 根据订单号，准备预支付
-    const { pay } = await this.getPayOrder(order_number);
-    console.log('2. 根据订单号，准备预支付', pay);
-    // 3. 根据预支付的数据，调用微信支付接口
-    const res = await this.getRequestPayment(pay);
-    console.log('3. 根据预支付的数据，调用微信支付接口', res);
-    // 4. 微信支付结束后，查询订单检查支付状态
-    const res2 = await this.getOrderCheck(order_number);
-    console.log('4. 微信支付结束后，查询订单检查支付状态', res2);
+    try {
+      // 支付流程 - 利用 await 把异步变同步，从上往下一步步执行
+      // 1. 创建订单，获取订单号
+      const {
+        order_number
+      } = await this.getOrderNumber();
+      console.log('1. 创建订单，获取订单号', order_number);
+      // 2. 根据订单号，准备预支付
+      const {
+        pay
+      } = await this.getPayOrder(order_number);
+      console.log('2. 根据订单号，准备预支付', pay);
+      // 3. 根据预支付的数据，调用微信支付接口
+      const res = await this.getRequestPayment(pay);
+      console.log('3. 根据预支付的数据，调用微信支付接口', res);
+      // 4. 微信支付结束后，查询订单检查支付状态
+      const res2 = await this.getOrderCheck(order_number);
+      console.log('4. 微信支付结束后，查询订单检查支付状态', res2);
+
+      // 支付成功也给用户提示
+      wx.showToast({
+        title: '支付成功',
+        icon: 'success'
+      });
+      
+    } catch (err) {
+      console.log('支付失败，执行catch', err);
+      // 支付失败给用户提示
+      wx.showToast({
+        title: '支付失败',
+        icon: 'none'
+      });
+    }
 
   },
 
@@ -154,11 +174,11 @@ Page({
   },
 
   // 4. 微信支付结束后，查询订单检查支付状态
-  getOrderCheck(order_number){
+  getOrderCheck(order_number) {
     return request({
-      url:'my/orders/chkOrder',
-      method:'POST',
-      data:{
+      url: 'my/orders/chkOrder',
+      method: 'POST',
+      data: {
         order_number
       }
     })
