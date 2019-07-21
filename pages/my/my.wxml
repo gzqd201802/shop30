@@ -1,2 +1,29 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<!-- 用户点击按钮获取信息 -->
+<!-- <button open-type="getUserInfo">获取用户信息</button> -->
+<!-- 可用于展示 - 用户没授权也可以展示 -->
+<!-- <open-data type="userNickName"></open-data> -->
+
+<!-- web-view -->
+<!-- <web-view src="https://www.baidu.com"></web-view> -->
+
+
+
+<!-- 
+longitude       中心经度 
+latitude        中心纬度
+scale           缩放级别，取值范围为3-20，数值越大，更具体
+markers         标记点集合 []
+polyline        路线
+show-location   显示带有方向的当前定位点
+
+
+-->
+<map 
+id="map" 
+longitude="{{ longitude }}" 
+latitude="{{ latitude }}" 
+scale="16" 
+markers="{{ markers }}" 
+polyline="{{ polyline }}" 
+show-location
+></map>

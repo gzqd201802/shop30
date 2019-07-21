@@ -1,1 +1,12 @@
 /* pages/my/my.wxss */
+map{
+  /*  % 相对单位，相对父级   */
+  /*  rpx 相对于屏幕宽度，水平宽度分成 750 份 */
+  /* width: 750rpx;
+  height: 750rpx; */
+
+  /* 视口 viewport width */
+  /* vw 也是相对于与屏幕宽度，水平宽度分成了 100 份 */
+  width: 100vw;
+  height: 100vh;
+}

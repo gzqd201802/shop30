@@ -1,66 +1,72 @@
-// pages/my/my.js
+
+const QQMapWX = require('../../lib/qqmap/qqmap-wx-jssdk.js');
+
+// 实例LBS地图服务对象
+const lbs = new QQMapWX({
+  key:'3HLBZ-ZIOWQ-TDT5U-GKEIU-GD753-2CBVD'
+});
+
+
+
+// map.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    // 经纬度
+    latitude: 39.90469,
+    longitude: 116.40717,
+    // 标记点集合
+    markers: [{
+      iconPath: "/images/point.png",
+      id: 0,
+      latitude: 23.099994,
+      longitude: 113.324520,
+      width: 50,
+      height: 50
+    },
+      {
+        iconPath: "/images/eat.png",
+        id: 1,
+        latitude: 23.110194,
+        longitude: 113.324520,
+        width: 50,
+        height: 50
+      }],
+    // 路线
+    polyline: [{
+      points: [{
+        longitude: 113.3245211,
+        latitude: 23.10229
+      }, {
+        longitude: 113.324520,
+        latitude: 23.21229
+      }],
+      color: "#FF0000DD",
+      width: 2,
+      dottedLine: true
+    }]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad(){
+    this.getLocation();
   },
+  // 
+  getLocation(){
+    // 调用前需要 用户授权 scope.userLocation
+    // 获取当前的地理位置、速度。
+    wx.getLocation({
+      // wgs84
+      type: 'wgs84', //返回可以用于wx.openLocation的经纬度
+      success: res => {
+        const {
+          latitude,
+          longitude
+        } = res;
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+        this.setData({
+          latitude,
+          longitude
+        });
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+      }
+    });
   }
 })
