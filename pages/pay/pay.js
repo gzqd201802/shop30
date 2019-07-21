@@ -93,7 +93,25 @@ Page({
         title: '支付成功',
         icon: 'success'
       });
-      
+
+      // 5. 支付完成后，把已经支付的商品从本地删除
+      let { cartList } = this.data;
+      // 先获取所有的 key
+      Object.keys(cartList)
+      // 过滤出被选中的商品的 key
+      .filter(id => cartList[id].selected)
+      // 遍历选中的 key，根据 key 删除掉对应数据
+      .forEach(id=>{
+        delete cartList[id];
+      });
+      // 5.1 更新本地存储数据
+      wx.setStorageSync('cartList', cartList);
+
+      // 6. 支付完成后，页面需要跳转
+      wx.switchTab({
+        url: '/pages/cart/cart',
+      });
+
     } catch (err) {
       console.log('支付失败，执行catch', err);
       // 支付失败给用户提示
