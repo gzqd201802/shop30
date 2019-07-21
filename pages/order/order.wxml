@@ -1,0 +1,29 @@
+<!-- 1.0 tab栏 -->
+<view class="tabs">
+  <view class="tabs-head">
+    <block wx:for="{{ tabsTitle }}" wx:key="*this">
+      <view class="tabs-head-item {{ activeIndex === index ? 'active' : '' }}">{{item}}</view>
+    </block>
+  </view>
+  <view class="divider"></view>
+  <view class="tabs-body">
+    <block wx:for="{{ orders }}" wx:key="order_id">
+      <view class="order-item">
+        <view class="order-goods">
+          <block wx:for="{{ item.goods }}" wx:key="id" wx:for-item="item2">
+            <goods-item item="{{ item2 }}" />
+          </block>
+        </view>
+        <view class="order-info">
+          <view class="order-info-row">
+            订单价格：{{ item.order_price }}
+          </view>
+          <view class="order-info-row">
+            订单编号：{{ item.order_number }}
+          </view>
+        </view>
+      </view>
+      <view class="divider"></view>
+    </block>
+  </view>
+</view>

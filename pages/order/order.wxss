@@ -1,0 +1,24 @@
+/* 定义主题颜色 */
+
+.tabs-head {
+  display: flex;
+  height: 100rpx;
+}
+
+.tabs-head-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.tabs-head-item.active::after {
+  content: "";
+  width: 100%;
+  height: 10rpx;
+  background-color: #eb4450;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
