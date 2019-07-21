@@ -80,7 +80,8 @@ Page({
     const res = await this.getRequestPayment(pay);
     console.log('3. 根据预支付的数据，调用微信支付接口', res);
     // 4. 微信支付结束后，查询订单检查支付状态
-
+    const res2 = await this.getOrderCheck(order_number);
+    console.log('4. 微信支付结束后，查询订单检查支付状态', res2);
 
   },
 
@@ -150,6 +151,17 @@ Page({
       })
     })
 
+  },
+
+  // 4. 微信支付结束后，查询订单检查支付状态
+  getOrderCheck(order_number){
+    return request({
+      url:'my/orders/chkOrder',
+      method:'POST',
+      data:{
+        order_number
+      }
+    })
   },
 
   /**
