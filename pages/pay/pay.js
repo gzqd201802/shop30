@@ -108,8 +108,12 @@ Page({
       wx.setStorageSync('cartList', cartList);
 
       // 6. 支付完成后，页面需要跳转
-      wx.switchTab({
-        url: '/pages/cart/cart',
+      // switchTab  跳转TabBar页
+      // navigateTo 跳转普通页，保留历史
+      // redirectTo 重定向，替换
+      // PS：支付完成后，就没有必要保留支付界面，替换成新的订单页
+      wx.redirectTo({
+        url: '/pages/order/order?type=3',
       });
 
     } catch (err) {

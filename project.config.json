@@ -100,9 +100,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 7,
 					"name": "订单中心",
 					"pathName": "pages/order/order",
+					"query": "",
 					"scene": null
 				}
 			]

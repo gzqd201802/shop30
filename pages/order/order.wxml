@@ -2,7 +2,7 @@
 <view class="tabs">
   <view class="tabs-head">
     <block wx:for="{{ tabsTitle }}" wx:key="*this">
-      <view class="tabs-head-item {{ activeIndex === index ? 'active' : '' }}">{{item}}</view>
+      <view bindtap="changeTab" data-index="{{ index }}" class="tabs-head-item {{ activeIndex === index ? 'active' : '' }}">{{item}}</view>
     </block>
   </view>
   <view class="divider"></view>
@@ -20,6 +20,9 @@
           </view>
           <view class="order-info-row">
             订单编号：{{ item.order_number }}
+          </view>
+          <view class="order-info-row" wx:if="{{ item.pay_status == 0  }}">
+            <button type="warn" size="mini">支付</button>
           </view>
         </view>
       </view>
