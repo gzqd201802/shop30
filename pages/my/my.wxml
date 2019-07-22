@@ -22,7 +22,7 @@ show-location   显示带有方向的当前定位点
 id="map" 
 longitude="{{ longitude }}" 
 latitude="{{ latitude }}" 
-scale="16" 
+scale="14" 
 markers="{{ markers }}" 
 polyline="{{ polyline }}" 
 show-location
